@@ -23,10 +23,17 @@ export function Home() {
   ];
 
   function handleParticipantAdd() {
-    Alert.alert("OLA");
+    if (participants.includes("blabla")) {
+      Alert.alert("existe", "Ja existe um participante na lista com esse nome");
+      return;
+    }
   }
 
   function handleParticipantRemove(name: string) {
+    Alert.alert("Remover", `Deseja remover ${name} da lista ?`, [
+      { text: "Sim", onPress: () => Alert.alert("Deletado!") },
+      { text: "Não", style: "cancel" },
+    ]);
     console.log(`Removendo o ${name}`);
   }
 
@@ -53,7 +60,7 @@ export function Home() {
           <Participant
             key={item}
             name={item}
-            onRemove={() => handleParticipantRemove("Rodrigo")}
+            onRemove={() => handleParticipantRemove(item)}
           />
         )}
         showsVerticalScrollIndicator={false}
